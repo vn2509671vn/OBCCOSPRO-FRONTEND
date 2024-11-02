@@ -1,0 +1,154 @@
+.custom-button {
+  background-color: #80bbdb; /* Màu nền */
+  border: none; /* Loại bỏ viền */
+  padding: 1vh 2vh 1vh 2vh;
+  color: white; /* Màu chữ */
+  text-align: center; /* Căn giữa chữ */
+  text-decoration: none; /* Loại bỏ gạch chân */
+  display: inline-block;
+  font-size: 16px; /* Kích thước chữ */
+  margin: 10px 2px;
+  cursor: pointer; /* Con trỏ chuột khi di chuột vào button */
+  border-radius: 8px; /* Bo góc button */
+  transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+.excel-button {
+  background-color: #03d815 !important; /* Màu nền */
+  border: none !important; /* Loại bỏ viền */
+  color: white !important; /* Màu chữ */
+  text-align: center !important; /* Căn giữa chữ */
+  text-decoration: none !important; /* Loại bỏ gạch chân */
+  display: inline-block !important;
+  font-size: 16px !important; /* Kích thước chữ */
+  margin-left: 2vh !important;
+  cursor: pointer !important; /* Con trỏ chuột khi di chuột vào button */
+  border-radius: 8px !important; /* Bo góc button */
+  transition: background-color 0.3s !important; /* Hiệu ứng chuyển màu */
+}
+
+button:disabled {
+  background-color: #cccccc; /* Màu nền xám */
+  color: #666666; /* Màu chữ xám nhạt */
+  cursor: not-allowed; /* Thay đổi con trỏ chuột */
+  opacity: 0.6; /* Tạo hiệu ứng mờ */
+}
+.custom-button-red {
+  background-color: #e24b48; /* Màu nền */
+  border: none; /* Loại bỏ viền */
+  padding: 1vh 3vh 1vh 3vh;
+  color: white; /* Màu chữ */
+  text-align: center; /* Căn giữa chữ */
+  text-decoration: none; /* Loại bỏ gạch chân */
+  display: inline-block;
+  font-size: 16px; /* Kích thước chữ */
+  margin: 10px 2px;
+  cursor: pointer; /* Con trỏ chuột khi di chuột vào button */
+  border-radius: 8px; /* Bo góc button */
+  transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+.custom-button-green {
+  background-color: #00af38; /* Màu nền */
+  border: none; /* Loại bỏ viền */
+  padding: 1vh 3vh 1vh 3vh;
+  color: white; /* Màu chữ */
+  text-align: center; /* Căn giữa chữ */
+  text-decoration: none; /* Loại bỏ gạch chân */
+  display: inline-block;
+  font-size: 16px; /* Kích thước chữ */
+  margin: 10px 2px;
+  cursor: pointer; /* Con trỏ chuột khi di chuột vào button */
+  border-radius: 8px; /* Bo góc button */
+  transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+.excel-button:hover {
+  background-color: #006921 !important; /* Màu nền khi di chuột vào */
+}
+.custom-button-green:hover {
+  background-color: #007c27; /* Màu nền khi di chuột vào */
+}
+.custom-button-red:hover {
+  background-color: #b03937; /* Màu nền khi di chuột vào */
+}
+.custom-button:hover {
+  background-color: #587f94; /* Màu nền khi di chuột vào */
+}
+
+/* Popup */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.close {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.action-button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Tạo kiểu cho thẻ select */
+.styled-select {
+  width: 250px;
+  height: 40px;
+  padding: 5px;
+
+  padding-right: 40px;
+  border: 2px solid #4caf50; /* Đường viền màu xanh lá */
+  border-radius: 8px;
+  background-color: white; /* Nền trắng */
+  font-size: 16px; /* Kích thước chữ */
+  color: #333; /* Màu chữ */
+  appearance: none; /* Ẩn biểu tượng mũi tên mặc định */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 viewBox%3D%220 0 4 5%22%3E%3Cpath fill%3D%22%234CAF50%22 d%3D%22M2 0L0 2h4zm0 5L0 3h4z%22/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Thay đổi màu sắc khi di chuột qua */
+.styled-select:hover {
+  border-color: #45a049; /* Màu xanh đậm hơn */
+}
+
+/* Khi được focus */
+.styled-select:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.5); /* Ánh sáng xanh khi được chọn */
+}
+
+/* Tùy chỉnh cho từng option */
+.styled-select option {
+  padding: 10px;
+}

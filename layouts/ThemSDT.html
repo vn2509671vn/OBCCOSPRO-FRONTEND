@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+
+    <link
+      href="assets/vendor/datatables.net-bs5/css/dataTables.bootstrap5.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="assets/vendor/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="assets/vendor/datatables.net-fixedcolumns-bs5/css/fixedColumns.bootstrap5.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="assets/vendor/datatables.net-fixedheader-bs5/css/fixedHeader.bootstrap5.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="assets/vendor/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="assets/vendor/datatables.net-select-bs5/css/select.bootstrap5.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link
+      href="assets/css/app.min.css"
+      rel="stylesheet"
+      type="text/css"
+      id="app-style"
+    />
+    <link
+      href="./styles/buttonInTable.css"
+      rel="stylesheet"
+      type="text/css"
+      id="app-style"
+    />
+    <link
+      href="./styles/loadingScreen.css"
+      rel="stylesheet"
+      type="text/css"
+      id="app-style"
+    />
+    <!-- <script src="./js/popUp.js"></script> -->
+
+    <!-- Icons css -->
+  </head>
+  <div id="loading-screen" style="display: none">
+    <div class="loading-content">
+      <p>Đang tải dữ liệu...</p>
+      <img class="loadding-image" src="./image/kOnzy.gif" />
+    </div>
+  </div>
+  <body>
+    <h2>Thêm số điện thoại</h2>
+    <button class="custom-button-green" onclick="showPopupThem(this,'')">
+      Thêm
+    </button>
+    <div class="table-responsive">
+      <table
+        id="scroll-horizontal-datatable"
+        class="table table-striped w-100 nowrap"
+        style="width: 100%"
+      >
+        <tbody>
+          <!-- Dữ liệu sẽ được chèn vào đây -->
+        </tbody>
+      </table>
+
+      <div id="popup" class="popup">
+        <div class="popup-content">
+          <span class="close" onclick="closePopupXoa()">&times;</span>
+          <!-- <p id="popup-data">Dữ liệu sẽ hiển thị ở đây!</p> -->
+          <p style="text-align: center">Xóa STB</p>
+          <form id="popup-form" method="post">
+            <input type="hidden" id="hidden-id" name="id" />
+            <input id="hidden-sdt" name="sdt" style="width: 100%" disabled />
+          </form>
+          <div class="button-group">
+            <button class="custom-button" onclick="submitFormXoa()">Xóa</button>
+            <button class="custom-button-red" onclick="closePopupXoa()">
+              Hủy
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="popupThem" class="popup">
+        <div class="popup-content">
+          <span class="close" onclick="closePopupThem()">&times;</span>
+          <!-- <p id="popup-data">Dữ liệu sẽ hiển thị ở đây!</p> -->
+          <p style="text-align: center">Thêm SDT</p>
+
+          <form id="area-form" method="post">
+            <textarea
+              id="ds-sdt"
+              rows="4"
+              cols="30"
+              placeholder="Nhập nội dung tại đây..."
+            ></textarea>
+          </form>
+          <div class="button-group">
+            <button class="custom-button-green" onclick="submitFormThem()">
+              Thêm
+            </button>
+            <button class="custom-button-red" onclick="closePopupThem()">
+              Hủy
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/vendor.min.js"></script>
+
+    <!-- Datatables js -->
+    <script src="assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="assets/vendor/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="assets/vendor/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="assets/vendor/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+    <script src="assets/vendor/datatables.net-fixedcolumns-bs5/js/fixedColumns.bootstrap5.min.js"></script>
+    <script src="assets/vendor/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="assets/vendor/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
+    <script src="assets/vendor/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="assets/vendor/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="assets/vendor/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="assets/vendor/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="assets/vendor/datatables.net-select/js/dataTables.select.min.js"></script>
+
+    <!-- Datatable Demo Aapp js -->
+
+    <!-- App js -->
+  </body>
+</html>

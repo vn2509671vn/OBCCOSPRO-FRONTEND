@@ -1,0 +1,28 @@
+#loading-screen {
+    position: fixed; /* Đảm bảo nó luôn nằm ở vị trí cố định trên màn hình */
+    top: 0;
+    left: 0;
+    width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
+    height: 100vh; /* Chiếm toàn bộ chiều cao màn hình */
+    background-color: rgba(0, 0, 0, 0.6); /* Nền tối với độ mờ */
+    z-index: 1000; /* Đảm bảo nó nằm trên các phần tử khác */
+    color: white; /* Màu chữ */
+    font-size: 24px; /* Kích thước chữ */
+    display: flex; /* Sử dụng Flexbox */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+  }
+  
+  .loading-content {
+    margin-top:20%;
+    text-align: center; /* Căn giữa văn bản */
+    padding: 20px; /* Khoảng cách bên trong để không bị sát viền */
+    margin-bottom: 50%;
+  }
+  
+  .loadding-image {
+    height: 10vh; /* Chiều cao hình ảnh */
+    width: 10vh; /* Chiều rộng hình ảnh */
+    margin-top: 10px; /* Khoảng cách giữa chữ và hình ảnh */
+  }
+  

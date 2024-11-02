@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Mirrored from coderthemes.com/jidox/layouts/apps-calendar.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Mar 2024 04:08:18 GMT -->
+  <head>
+    <meta charset="utf-8" />
+    <title>Trang chủ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      content="A fully featured admin theme which can be used to build CRM, CMS, etc."
+      name="description"
+    />
+    <meta content="Coderthemes" name="author" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+
+    <!-- Fullcalendar css -->
+
+    <!-- Theme Config Js -->
+    <script src="assets/js/config.js"></script>
+
+    <!-- App css -->
+    <link
+      href="assets/css/app.min.css"
+      rel="stylesheet"
+      type="text/css"
+      id="app-style"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../config.js"></script>
+
+    <!-- Icons css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <!-- Begin page -->
+    <div class="wrapper">
+      <!-- ========== Topbar Start ========== -->
+      <div class="navbar-custom">
+        <div class="topbar container-fluid">
+          <div class="d-flex align-items-center gap-lg-2 gap-1">
+            <!-- Topbar Brand Logo -->
+            <div class="logo-topbar">
+              <!-- Logo light -->
+              <a href="home.html" class="logo-light">
+                <span class="logo-lg">
+                  <img
+                    src="../image/7N0r4AYXx9lF568Ec3UonlGVMEMH7k5ESJztPB8N.png"
+                    alt="logo"
+                  />
+                </span>
+                <span class="logo-sm">
+                  <img
+                    src="../image/7N0r4AYXx9lF568Ec3UonlGVMEMH7k5ESJztPB8N.png"
+                    alt="small logo"
+                  />
+                </span>
+              </a>
+
+              <!-- Logo Dark -->
+              <a href="index.html" class="logo-dark">
+                <span class="logo-lg">
+                  <img
+                    src="../image/7N0r4AYXx9lF568Ec3UonlGVMEMH7k5ESJztPB8N.png"
+                    alt="dark logo"
+                  />
+                </span>
+                <span class="logo-sm">
+                  <img
+                    src="../image/7N0r4AYXx9lF568Ec3UonlGVMEMH7k5ESJztPB8N.png"
+                    alt="small logo"
+                  />
+                </span>
+              </a>
+            </div>
+
+            <!-- Sidebar Menu Toggle Button -->
+            <button class="button-toggle-menu">
+              <i class="ri-menu-2-fill"></i>
+            </button>
+
+            <!-- Horizontal Menu Toggle Button -->
+            <button
+              class="navbar-toggle"
+              data-bs-toggle="collapse"
+              data-bs-target="#topnav-menu-content"
+            >
+              <div class="lines">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </button>
+
+            <!-- Topbar Search Form -->
+          </div>
+
+          <ul class="topbar-menu d-flex align-items-center gap-3">
+            <li class="dropdown d-lg-none">
+              <a
+                class="nav-link dropdown-toggle arrow-none"
+                data-bs-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-haspopup="false"
+                aria-expanded="false"
+              >
+              </a>
+              <div
+                class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg p-0"
+              ></div>
+            </li>
+
+            <li class="d-none d-sm-inline-block">
+              <a
+                class="nav-link"
+                data-bs-toggle="offcanvas"
+                href="#theme-settings-offcanvas"
+              >
+                <i class="ri-settings-3-fill fs-22"></i>
+              </a>
+            </li>
+
+            <li class="d-none d-sm-inline-block">
+              <div class="nav-link" id="light-dark-mode">
+                <i class="ri-moon-fill fs-22"></i>
+              </div>
+            </li>
+
+            <li class="d-none d-md-inline-block">
+              <a class="nav-link" href="#" data-toggle="fullscreen">
+                <i class="ri-fullscreen-line fs-22"></i>
+              </a>
+            </li>
+
+            <li class="dropdown me-md-2">
+              <a
+                class="nav-link dropdown-toggle arrow-none nav-user px-2"
+                data-bs-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-haspopup="false"
+                aria-expanded="false"
+              >
+                <span class="d-lg-flex flex-column gap-1 d-none">
+                  <h5 class="my-0"></h5>
+                  <h6 class="my-0 fw-normal" id="full_name_1"></h6>
+                </span>
+              </a>
+              <div
+                class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown"
+              >
+                <!-- item-->
+                <div class="dropdown-header noti-title">
+                  <h6 class="text-overflow m-0"></h6>
+                </div>
+
+                <!-- item-->
+                <a href="#" class="dropdown-item" id="logout">
+                  <i class="ri-logout-box-fill align-middle me-1"></i>
+                  <span>Đăng xuất</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- ========== Topbar End ========== -->
+
+      <!-- ========== Left Sidebar Start ========== -->
+      <div class="leftside-menu">
+        <!-- Brand Logo Light -->
+        <a href="index.html" class="logo logo-light">
+          <span class="logo-lg">
+            <img
+              src="../image/7N0r4AYXx9lF568Ec3UonlGVMEMH7k5ESJztPB8N.png"
+              alt="logo"
+            />
+          </span>
+          <span class="logo-sm">
+            <img
+              src="../image/7N0r4AYXx9lF568Ec3UonlGVMEMH7k5ESJztPB8N.png"
+              alt="small logo"
+            />
+          </span>
+        </a>
+
+        <!-- Brand Logo Dark -->
+        <a href="index.html" class="logo logo-dark">
+          <span class="logo-lg">
+            <img
+              src="../image/7N0r4AYXx9lF568Ec3UonlGVMEMH7k5ESJztPB8N.png"
+              alt="dark logo"
+            />
+          </span>
+          <span class="logo-sm">
+            <img
+              src="../image/7N0r4AYXx9lF568Ec3UonlGVMEMH7k5ESJztPB8N.png"
+              alt="small logo"
+            />
+          </span>
+        </a>
+
+        <!-- Sidebar Hover Menu Toggle Button -->
+        <div
+          class="button-sm-hover"
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          title="Show Full Sidebar"
+        >
+          <i class="ri-checkbox-blank-circle-line align-middle"></i>
+        </div>
+
+        <!-- Full Sidebar Menu Close Button -->
+        <div class="button-close-fullsidebar">
+          <i class="ri-close-fill align-middle"></i>
+        </div>
+
+        <!-- Sidebar -left -->
+        <div class="h-100" id="leftside-menu-container" data-simplebar>
+          <!-- Leftbar User -->
+          <div class="leftbar-user p-3 text-white">
+            <a
+              href="pages-profile.html"
+              class="d-flex align-items-center text-reset"
+            >
+              <div class="flex-shrink-0"></div>
+              <div class="flex-grow-1 ms-2">
+                <span class="fw-semibold fs-15 d-block" id="full_name_2"></span>
+                <span class="fs-13" id="vnpt_code"></span>
+              </div>
+              <div class="ms-auto">
+                <i class="ri-arrow-right-s-fill fs-20"></i>
+              </div>
+            </a>
+          </div>
+
+          <!--- Sidemenu -->
+          <ul class="side-nav">
+            <li class="side-nav-title mt-1">Main</li>
+
+            <li class="side-nav-item">
+              <a href="#" class="side-nav-link" data-page="TraCuuTTTB.html">
+                <i class="ri-dashboard-2-fill"></i>
+                <span> Tra cứu TTTB </span>
+              </a>
+            </li>
+
+            <li class="side-nav-item">
+              <a href="#" class="side-nav-link" data-page="OBTrong24h.html">
+                <i class="ri-dashboard-2-fill"></i>
+                <span> OB thực hiện trong 24h </span>
+              </a>
+            </li>
+            <li class="side-nav-item">
+              <a href="#" class="side-nav-link" data-page="HenGoiLaiCKD.html">
+                <i class="ri-dashboard-2-fill"></i>
+                <span> Hẹn gọi lại CKD </span>
+              </a>
+            </li>
+            <li class="side-nav-item">
+              <a href="#" class="side-nav-link" data-page="HenGoiLaiCKN.html">
+                <i class="ri-dashboard-2-fill"></i>
+                <span> Hẹn gọi lại CKN </span>
+              </a>
+            </li>
+            <!-- <li class="side-nav-item">
+              <a href="#" class="side-nav-link" data-page="ThemSDT.html">
+                <i class="ri-dashboard-2-fill"></i>
+                <span> Thêm SDT </span>
+              </a>
+            </li> -->
+            <li class="side-nav-item">
+              <a href="#" class="side-nav-link" data-page="QuanLyTKCCOS.html">
+                <i class="ri-dashboard-2-fill"></i>
+                <span> Quản lý TK CCOS </span>
+              </a>
+            </li>
+            <li class="side-nav-item">
+              <a href="#" class="side-nav-link" data-page="BaoCaoCKD.html">
+                <i class="ri-dashboard-2-fill"></i>
+                <span> Báo cáo CKD </span>
+              </a>
+            </li>
+            <li class="side-nav-item">
+              <a href="#" class="side-nav-link" data-page="BaoCaoCKN.html">
+                <i class="ri-dashboard-2-fill"></i>
+                <span> Báo cáo CKN </span>
+              </a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+
+      <div class="content-page">
+        <div class="content">
+          <!-- Start Content-->
+          <div class="container-fluid">
+            <!-- start page title -->
+            <div class="row">
+              <div class="col-12">
+                <div
+                  class="page-title-box justify-content-between d-flex align-items-md-center flex-md-row flex-column"
+                >
+                  <h4 class="page-title">-</h4>
+                  <ol class="breadcrumb m-0"></ol>
+                </div>
+              </div>
+            </div>
+            <!-- end page title -->
+
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body" style="overflow-x: auto">
+                    <!-- page-content -->
+                  </div>
+                  <!-- end card body-->
+                </div>
+                <!-- end card -->
+
+                <!-- Add New Event MODAL -->
+
+                <!-- end modal-->
+              </div>
+              <!-- end col-12 -->
+            </div>
+            <!-- end row -->
+          </div>
+          <!-- container -->
+        </div>
+        <!-- content -->
+      </div>
+    </div>
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="theme-settings-offcanvas"
+    >
+      <div class="d-flex align-items-center bg-primary p-3 offcanvas-header">
+        <h5 class="text-white m-0">Theme Settings</h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white ms-auto"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="offcanvas-body p-0">
+        <div data-simplebar class="h-100">
+          <div class="card mb-0 p-3">
+            <div class="alert alert-warning" role="alert">
+              <strong>Customize </strong> the overall color scheme, sidebar
+              menu, etc.
+            </div>
+
+            <h5 class="mt-0 fs-16 fw-bold mb-3">Choose Layout</h5>
+            <div class="d-flex flex-column gap-2">
+              <div class="form-check form-switch">
+                <input
+                  id="customizer-layout01"
+                  name="data-layout"
+                  type="checkbox"
+                  value="vertical"
+                  class="form-check-input"
+                />
+                <label class="form-check-label" for="customizer-layout01"
+                  >Vertical</label
+                >
+              </div>
+              <div class="form-check form-switch">
+                <input
+                  id="customizer-layout02"
+                  name="data-layout"
+                  type="checkbox"
+                  value="horizontal"
+                  class="form-check-input"
+                />
+                <label class="form-check-label" for="customizer-layout02"
+                  >Horizontal</label
+                >
+              </div>
+            </div>
+
+            <h5 class="my-3 fs-16 fw-bold">Color Scheme</h5>
+
+            <div class="d-flex flex-column gap-2">
+              <div class="form-check form-switch">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="data-bs-theme"
+                  id="layout-color-light"
+                  value="light"
+                />
+                <label class="form-check-label" for="layout-color-light"
+                  >Light</label
+                >
+              </div>
+
+              <div class="form-check form-switch">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="data-bs-theme"
+                  id="layout-color-dark"
+                  value="dark"
+                />
+                <label class="form-check-label" for="layout-color-dark"
+                  >Dark</label
+                >
+              </div>
+            </div>
+
+            <div id="layout-width">
+              <h5 class="my-3 fs-16 fw-bold">Layout Mode</h5>
+
+              <div class="d-flex flex-column gap-2">
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="data-layout-mode"
+                    id="layout-mode-fluid"
+                    value="fluid"
+                  />
+                  <label class="form-check-label" for="layout-mode-fluid"
+                    >Fluid</label
+                  >
+                </div>
+
+                <div id="layout-boxed">
+                  <div class="form-check form-switch">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="data-layout-mode"
+                      id="layout-mode-boxed"
+                      value="boxed"
+                    />
+                    <label class="form-check-label" for="layout-mode-boxed"
+                      >Boxed</label
+                    >
+                  </div>
+                </div>
+
+                <div id="layout-detached">
+                  <div class="form-check form-switch">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="data-layout-mode"
+                      id="data-layout-detached"
+                      value="detached"
+                    />
+                    <label class="form-check-label" for="data-layout-detached"
+                      >Detached</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h5 class="my-3 fs-16 fw-bold">Topbar Color</h5>
+
+            <div class="d-flex flex-column gap-2">
+              <div class="form-check form-switch">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="data-topbar-color"
+                  id="topbar-color-light"
+                  value="light"
+                />
+                <label class="form-check-label" for="topbar-color-light"
+                  >Light</label
+                >
+              </div>
+
+              <div class="form-check form-switch">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="data-topbar-color"
+                  id="topbar-color-dark"
+                  value="dark"
+                />
+                <label class="form-check-label" for="topbar-color-dark"
+                  >Dark</label
+                >
+              </div>
+
+              <div class="form-check form-switch">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="data-topbar-color"
+                  id="topbar-color-brand"
+                  value="brand"
+                />
+                <label class="form-check-label" for="topbar-color-brand"
+                  >Brand</label
+                >
+              </div>
+            </div>
+
+            <div>
+              <h5 class="my-3 fs-16 fw-bold">Menu Color</h5>
+
+              <div class="d-flex flex-column gap-2">
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="data-menu-color"
+                    id="leftbar-color-light"
+                    value="light"
+                  />
+                  <label class="form-check-label" for="leftbar-color-light"
+                    >Light</label
+                  >
+                </div>
+
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="data-menu-color"
+                    id="leftbar-color-dark"
+                    value="dark"
+                  />
+                  <label class="form-check-label" for="leftbar-color-dark"
+                    >Dark</label
+                  >
+                </div>
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="data-menu-color"
+                    id="leftbar-color-brand"
+                    value="brand"
+                  />
+                  <label class="form-check-label" for="leftbar-color-brand"
+                    >Brand</label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div id="sidebar-size">
+              <h5 class="my-3 fs-16 fw-bold">Sidebar Size</h5>
+
+              <div class="d-flex flex-column gap-2">
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="data-sidenav-size"
+                    id="leftbar-size-default"
+                    value="default"
+                  />
+                  <label class="form-check-label" for="leftbar-size-default"
+                    >Default</label
+                  >
+                </div>
+
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="data-sidenav-size"
+                    id="leftbar-size-compact"
+                    value="compact"
+                  />
+                  <label class="form-check-label" for="leftbar-size-compact"
+                    >Compact</label
+                  >
+                </div>
+
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="data-sidenav-size"
+                    id="leftbar-size-small"
+                    value="condensed"
+                  />
+                  <label class="form-check-label" for="leftbar-size-small"
+                    >Condensed</label
+                  >
+                </div>
+
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="data-sidenav-size"
+                    id="leftbar-size-small-hover"
+                    value="sm-hover"
+                  />
+                  <label class="form-check-label" for="leftbar-size-small-hover"
+                    >Hover View</label
+                  >
+                </div>
+
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="data-sidenav-size"
+                    id="leftbar-size-full"
+                    value="full"
+                  />
+                  <label class="form-check-label" for="leftbar-size-full"
+                    >Full Layout</label
+                  >
+                </div>
+
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="data-sidenav-size"
+                    id="leftbar-size-fullscreen"
+                    value="fullscreen"
+                  />
+                  <label class="form-check-label" for="leftbar-size-fullscreen"
+                    >Fullscreen Layout</label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div id="layout-position">
+              <h5 class="my-3 fs-16 fw-bold">Layout Position</h5>
+
+              <div class="btn-group checkbox" role="group">
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="data-layout-position"
+                  id="layout-position-fixed"
+                  value="fixed"
+                />
+                <label
+                  class="btn btn-soft-primary w-sm"
+                  for="layout-position-fixed"
+                  >Fixed</label
+                >
+
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="data-layout-position"
+                  id="layout-position-scrollable"
+                  value="scrollable"
+                />
+                <label
+                  class="btn btn-soft-primary w-sm ms-0"
+                  for="layout-position-scrollable"
+                  >Scrollable</label
+                >
+              </div>
+            </div>
+
+            <div id="sidebar-user">
+              <div
+                class="d-flex justify-content-between align-items-center mt-3"
+              >
+                <label class="fs-16 fw-bold m-0" for="sidebaruser-check"
+                  >Sidebar User Info</label
+                >
+                <div class="form-check form-switch">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="sidebar-user"
+                    id="sidebaruser-check"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="offcanvas-footer border-top p-3 text-center">
+        <div class="row">
+          <div class="col-6">
+            <button type="button" class="btn btn-light w-100" id="reset-layout">
+              Reset
+            </button>
+          </div>
+          <div class="col-6">
+            <a href="#" role="button" class="btn btn-primary w-100">Buy Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vendor js -->
+    <script src="assets/js/vendor.min.js"></script>
+
+    <!-- Fullcalendar js -->
+    <script src="assets/vendor/fullcalendar/main.min.js"></script>
+
+    <!-- Calendar App Demo js -->
+    <script src="assets/js/pages/demo.calendar.js"></script>
+
+    <!-- App js -->
+    <script src="assets/js/app.min.js"></script>
+    <script>
+      window.onload = function () {
+        const accessToken = localStorage.getItem("access_token");
+        if (!accessToken) {
+          // Nếu access_token không tồn tại, chuyển hướng về trang đăng nhập
+          window.location.href = "login.html"; // Thay "login.html" bằng URL của trang đăng nhập thực tế
+        }
+      };
+      document
+        .getElementById("logout")
+        .addEventListener("click", function (event) {
+          event.preventDefault(); // Ngăn chặn hành động mặc định của thẻ <a>
+
+          // Xóa access_token khỏi local storage
+          localStorage.removeItem("access_token");
+
+          // Chuyển hướng về trang đăng nhập
+          window.location.href = "login.html"; // Thay "login.html" bằng URL của trang đăng nhập thực tế
+        });
+      $(document).ready(function () {
+        // Khi bấm vào một mục trên sidebar
+        $(".side-nav-link").click(function (e) {
+          e.preventDefault(); // Ngăn hành động mặc định của thẻ <a>
+          var page = $(this).data("page"); // Lấy giá trị data-page
+
+          // Sử dụng AJAX để tải trang
+          $.get(page, function (data) {
+            $(".card-body").html(data); // Chèn nội dung vào .card-body
+            var scriptName = page.replace(".html", ""); // Loại bỏ .html
+            var script = document.createElement("script");
+            script.src = `./js/${scriptName}.js`; // Đường dẫn đến script
+            document.body.appendChild(script); // Thêm script vào body
+          }).fail(function () {
+            $(".card-body").html("<p>Không thể tải trang.</p>"); // Thông báo nếu có lỗi
+          });
+        });
+      });
+
+      // Chèn biến vào thẻ h1
+      document.getElementById("full_name_1").innerHTML =
+        localStorage.getItem("full_name");
+      document.getElementById("full_name_2").innerHTML =
+        localStorage.getItem("full_name");
+      document.getElementById("vnpt_code").innerHTML =
+        localStorage.getItem("vnpt_code");
+    </script>
+  </body>
+
+  <!-- Mirrored from coderthemes.com/jidox/layouts/apps-calendar.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Mar 2024 04:08:19 GMT -->
+</html>

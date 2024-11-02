@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thông Tin Thuê Bao</title>
+    <link rel="stylesheet" href="./styles/TraCuuTTTB.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <div class="form-container">
+        <div class="container">
+            <div class="form-title">THÔNG TIN THUÊ BAO</div>
+            <form class="form-grid">
+                <!-- Cột 1 -->
+                <div>
+                    <div class="form-group">
+                        <label for="soTB">Số thuê bao</label>
+                        <div class="input-group">
+                            <input type="text" id="ma-so-quoc-gia" placeholder="84" value="84" style="max-width: 7vh" />
+                            <input type="text" id="soTB" placeholder="" />
+                            <i class="search-icon" id="searchIcon" style="text-align: center; font-size: 3vh; cursor: pointer;">🔍</i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="loai-thue-bao">Loại thuê bao:</label>
+                        <input type="text" id="loai-thue-bao" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label for="loai-sim">Tên TB:</label>
+                        <input type="text" id="ten-tb" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label for="so-tk-chinh">Tài khoản chính:</label>
+                        <input type="number" id="so-tk-chinh" disabled />
+                    </div>
+                </div>
+                <!-- Cột 2 -->
+                <div>
+                    <div class="form-group">
+                        <label for="msin">MSIN:</label>
+                        <input type="text" id="msin" disabled />
+                    </div>
+                    <div class="form-group" style="margin: 15px">
+                        <label for="checkboxes">Gọi đi:</label>
+                        <input type="checkbox" id="goi-di" disabled style="margin-right: 20vh" />
+                        <label for="goi-den">Gọi đến:</label>
+                        <input type="checkbox" id="goi-den" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label for="ngay-kh">Ngày KH:</label>
+                        <input type="date" id="ngay-kh" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label for="han-su-dung">Hạn sử dụng:</label>
+                        <input type="text" id="han-su-dung" disabled />
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Tiêu đề cho DataTable -->
+        <h2 style="text-align: center; margin-top: 20px;">Lịch sử Autocall</h2>
+        
+        <!-- DataTable hiển thị thông tin Auto Call -->
+        <div class="table-container">
+            <table id="autoCallTable" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Số Thuê Bao</th>
+                        <th>Chương trình</th>
+                        <th>Người thực hiện</th>
+                        <th>Thời Gian Gọi</th>
+                        <th>Trạng Thái</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dữ liệu sẽ được đổ vào đây từ API -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="./js/TraCuuTTTB.js"></script>
+</body>
+</html>
