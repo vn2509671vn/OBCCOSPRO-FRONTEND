@@ -102,6 +102,7 @@ function reloadTable(data) {
 }
 
 function submitForm() {
+    document.getElementById('loading-screen').style.display = 'block';
     // Lấy giá trị của hidden input
     const id = document.getElementById('hidden-id').value;
     // Lấy giá trị đã chọn từ dropdown
@@ -111,6 +112,7 @@ function submitForm() {
     // In ra console
     if (selectedValue == null || selectedValue == "") {
         alert("Bạn chưa chọn tên");
+        document.getElementById('loading-screen').style.display = 'none';
     } else {
 
         fetch(localStorage.getItem("http_endpoint") + 'obccos/ChuyenOB?progId=6583a76346270935aa47ede9&id=' + id + '&ktv=' + selectedValue, {
@@ -123,8 +125,10 @@ function submitForm() {
             .then(response => {
                 if (!response.ok) {
                     alert('Chuyển OB thất bại');
+                    document.getElementById('loading-screen').style.display = 'none';
                 } else {
                     alert('Chuyển OB thành công');
+                    document.getElementById('loading-screen').style.display = 'none';
                     fetchDataHenGoiLaiCKD();
                     closePopup();
                 }
