@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="./styles/TraCuuTTTB.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 </head>
+<div id="loading-screen" style="display: none">
+    <div class="loading-content">
+      <p>Đang tải dữ liệu...</p>
+      <img class="loadding-image" src="./image/kOnzy.gif" />
+    </div>
+  </div>
 <body>
     <div class="form-container">
         <div class="container">
@@ -72,6 +78,28 @@
                         <th>Người thực hiện</th>
                         <th>Thời Gian Gọi</th>
                         <th>Trạng Thái</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dữ liệu sẽ được đổ vào đây từ API -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tiêu đề cho DataTable -->
+        <h2 style="text-align: center; margin-top: 20px;">Lịch sử chuyển OB</h2>
+        
+        <!-- DataTable hiển thị thông tin Auto Call -->
+        <div class="table-container">
+            <table id="hisOBTable" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Số Thuê Bao</th>
+                        <th>Chương trình</th>
+                        <th>Họ tên KTV</th>
+                        <th>Trạng Thái OB</th>
+                        <th>Ngày OB</th>
+                        <th>Ghi Chú</th>
                     </tr>
                 </thead>
                 <tbody>

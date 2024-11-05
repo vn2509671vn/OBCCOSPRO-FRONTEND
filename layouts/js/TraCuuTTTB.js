@@ -4,10 +4,12 @@ document.getElementById("goi-di").disabled = true;
 
 // Hàm thực hiện khi tìm kiếm
 function searchSubscriber() {
+    document.getElementById('loading-screen').style.display = "block";
     var stb = document.getElementById("soTB").value;
 
     if (stb == "") {
         alert("Vui lòng nhập số điện thoại cần tra cứu!");
+        document.getElementById('loading-screen').style.display = "none";
         return;
     }
 
@@ -69,12 +71,15 @@ function searchSubscriber() {
 
                             // Gọi API mới và cập nhật DataTable
                             fetchAutoCallData(stb);
+                            fetchChuyenOBData(stb);
                         })
                         .catch((error) => console.error("Lỗi khi gọi API:", error));
                 })
                 .catch((error) => console.error("Lỗi khi gọi API:", error));
         })
         .catch((error) => console.error("Lỗi khi gọi API:", error));
+
+        document.getElementById('loading-screen').style.display = "none";
 }
 
 // Hàm gọi API TraCuuAutoCall và cập nhật DataTable
@@ -104,6 +109,40 @@ function fetchAutoCallData(sdt) {
                 item.NguoiThucHien,
                 item.NgayThucHien,
                 item.TrangThaiOB
+            ]).draw();
+        });
+    }).fail(function (error) {
+        console.error(response.message);
+    });
+}
+
+// Hàm gọi API LichSuOB và cập nhật DataTable
+function fetchChuyenOBData(sdt) {
+    var settings = {
+        url: localStorage.getItem("http_endpoint") + "obccos/searchHisOb?smis=" + sdt,
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        }
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+
+        // Xóa các hàng cũ trong bảng trước khi thêm dữ liệu mới
+        var table = $('#hisOBTable').DataTable();
+        table.clear();
+
+        // Thêm dữ liệu mới từ response vào DataTable
+        response.result.data.forEach(function (item) {
+            table.row.add([
+                item.smis,
+                item.progName,
+                item.employeeFullName,
+                item.obStateName,
+                item.obDate,
+                item.note
             ]).draw();
         });
     }).fail(function (error) {
