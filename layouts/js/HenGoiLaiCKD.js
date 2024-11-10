@@ -190,11 +190,11 @@ function submitFormGH(button) {
             
                 $.ajax(settings).done(function (response) {
                     console.log(response);
-                    if(response){
-                        alert("Gia hạn thành công!");
+                    if(response.GiaHanThanhCong){
+                        alert("Thành công: " + response.Messenger);
                     }
                     else {
-                        alert("Gia hạn thất bại!");
+                        alert("Thất bại: " + response.Messenger);
                     }
                     document.getElementById('btnXacNhanGHCKD').disabled = false;
                     document.getElementById('loading-screen').style.display = "none";
