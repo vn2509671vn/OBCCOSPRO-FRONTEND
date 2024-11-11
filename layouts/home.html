@@ -289,6 +289,14 @@
                 <span> Báo cáo CKN </span>
               </a>
             </li>
+
+            <li class="side-nav-title mt-1">________</li>
+            <li class="side-nav-item">
+              <a href="#" class="side-nav-link" id="btnDangXuat">
+                <i class="ri-dashboard-2-fill"></i>
+                <span> Đăng xuất </span>
+              </a>
+            </li>
           </ul>
           <div class="clearfix"></div>
         </div>
@@ -747,6 +755,16 @@
           }).fail(function () {
             $(".card-body").html("<p>Không thể tải trang.</p>"); // Thông báo nếu có lỗi
           });
+        });
+
+        $("#btnDangXuat").click(function(e){
+          e.preventDefault(); // Ngăn chặn hành động mặc định của thẻ <a>
+
+          // Xóa access_token khỏi local storage
+          localStorage.removeItem("access_token");
+
+          // Chuyển hướng về trang đăng nhập
+          window.location.href = "login.html"; // Thay "login.html" bằng URL của trang đăng nhập thực tế
         });
       });
 
