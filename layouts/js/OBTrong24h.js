@@ -89,21 +89,18 @@ function reloadTable(data) {
             $('td:eq(0)', row).html(rowIndex);
 
             const smiNumber = data[1];
+            const sdt = data[2];
 
-            const button1 = $('<button onclick=showPopup(this,"obccos/GetListUser")>')
+            const button1 = $('<button style="margin-right: 10px" onclick=showPopup(this,"obccos/GetListUser")>')
                 .text('Chuyển OB')
                 .click(function () {
                     console.log('SMIS:', smiNumber);
                 });
 
-            // const button2 = $('<button class="custom-button"  onclick="showPopup(this,"obccos/GetListUser")>')
-            //     .text('Sửa')
-            //     .click(function () {
-            //         console.log('Chỉnh sửa SMIS:', smiNumber);
-            //     });
+            const button2 = $(`<button onclick="showPopup2(this, '${sdt}')">Click Me</button>`).text('Gia hạn');
 
-            // $('td:eq(7)', row).append(button1).append(button2);
-            $('td:eq(9)', row).append(button1);
+            $('td:eq(9)', row).append(button1).append(button2);
+            //$('td:eq(9)', row).append(button1);
 
         }
     });
@@ -207,8 +204,189 @@ function showPopup(button, url) {
 
     document.getElementById("popup").style.display = "block";
 }
+
+function showPopup2(button, sdt) {
+    document.getElementById('loading-screen').style.display = "block";
+
+    // Lấy giá trị từ ô input và thực hiện fetch
+    fetch(
+        localStorage.getItem("http_endpoint") + "obccos/getTTTT?stb=" + sdt,
+        {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+                "Content-Type": "application/json",
+            },
+        }
+    )
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            fetch(
+                localStorage.getItem("http_endpoint") + "obccos/getTTCoban?stb=" + sdt,
+                {
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+                        "Content-Type": "application/json",
+                    },
+                }
+            )
+                .then((response) => response.json())
+                .then((data1) => {
+                    fetch(
+                        localStorage.getItem("http_endpoint") + "obccos/getCosName?stb=" + sdt,
+                        {
+                            method: "GET",
+                            headers: {
+                                Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+                                "Content-Type": "application/json",
+                            },
+                        }
+                    )
+                        .then((response) => response.json())
+                        .then((data2) => {
+                            var row = button.closest('tr');
+                            var id = row.cells[1].innerText;
+                            document.getElementById("hidden-mappingid").value = id;
+
+                            document.getElementById("hidden-ngay-kh").value = formatDate(data1.DataSet.ACTIVE);
+                            document.getElementById("hidden-tkc").value = data2.DataSet.SUBP_BEB_BALANCE_1;
+                            document.getElementById("hidden-hsd").value = formatDate(data2.DataSet.SUBP_BEB_ACC_EXPIRATION_1);
+                            document.getElementById("hidden-msin").value = data1.DataSet.SO_MSIN;
+                            document.getElementById("hidden-ten-tb").value = data.DataSet.FULLNAME;
+                            document.getElementById("hidden-dia-chi-tb").value = data.DataSet.ADDRESS;
+                            document.getElementById("hidden-loai-tb").value = data1.DataSet.TEN_LOAI;
+                            
+                            fetch(localStorage.getItem("http_endpoint") + 'db/list_user_ccos?obccos_user_code=' + localStorage.getItem("user_code"), {
+                                method: "GET",
+                                headers: {
+                                    Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+                                    "Content-Type": "application/json",
+                                },
+                            })
+                                .then(response => response.json())
+                                .then(response_data => {
+                                    console.log('API data:', response_data);
+                                    if (response_data.error_code === "0") {
+                                        const dataList = response_data.data;
+            
+                                        if (Array.isArray(dataList)) {
+                                            const dropdown = document.getElementById('dropdownListGH');
+                                            dropdown.innerHTML = ''; // Xóa các option cũ
+            
+                                            // Thêm option mặc định
+                                            let defaultOption = document.createElement('option');
+                                            defaultOption.value = '';
+                                            defaultOption.text = '--Chọn một mục--';
+                                            dropdown.appendChild(defaultOption);
+                                            // Duyệt qua mảng và thêm các option mới
+                                            dataList.forEach(item => {
+                                                let option = document.createElement('option');
+                                                option.value = item.username_ccos;
+                                                option.text = item.username_ccos;
+                                                dropdown.appendChild(option);
+                                            });
+
+                                            document.getElementById('loading-screen').style.display = "none";
+                                        } else {
+                                            document.getElementById('loading-screen').style.display = "none";
+                                            console.error('Dữ liệu không phải là mảng, không thể lặp qua nó:', dataList);
+                                        }
+            
+                                    } else {
+                                        document.getElementById('loading-screen').style.display = "none";
+                                    }
+                                })
+                                .catch(document.getElementById('loading-screen').style.display = "none");
+
+                        })
+                        .catch((error) => console.error("Lỗi khi gọi API:", error));
+                })
+                .catch((error) => console.error("Lỗi khi gọi API:", error));
+        })
+        .catch((error) => console.error("Lỗi khi gọi API:", error));
+
+    document.getElementById("popupGH").style.display = "block";
+    
+}
+
+function submitFormGH(button) {
+    document.getElementById('btnXacNhanGHCKD').disabled = true;
+
+    document.getElementById('loading-screen').style.display = "block";
+    // Lấy giá trị của hidden input
+    var mappingid = document.getElementById("hidden-mappingid").value;
+
+    var ngay_kh = document.getElementById("hidden-ngay-kh").value;
+    var tkc = document.getElementById("hidden-tkc").value;
+    var hsd = document.getElementById("hidden-hsd").value;
+    var ten_tb = document.getElementById("hidden-ten-tb").value;
+    var dia_chi = document.getElementById("hidden-dia-chi-tb").value;
+    var loai_tb = document.getElementById("hidden-loai-tb").value;
+    // Lấy giá trị đã chọn từ dropdown
+
+    const user_ccos = document.getElementById('dropdownListGH').value;
+
+    // In ra console
+    if (user_ccos == null || user_ccos == "") {
+        document.getElementById('btnXacNhanGHCKD').disabled = false;
+        document.getElementById('loading-screen').style.display = "none";
+        alert("Bạn chưa chọn tên");
+    } else {
+
+        fetch(localStorage.getItem("http_endpoint") + 'obccos/getIdOBAA?mappingId='+mappingid+'&loaitb_id=' + loai_tb + '&ten_tb=' + ten_tb + '&ten_kh=' + ten_tb + '&so_nha=' + dia_chi + '&ten_loai=' + loai_tb + '&ngay_kh=' + ngay_kh + '&tkc=' + tkc + '&hsd=' + hsd, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => response.json()).then((response_data) => {
+                console.log(response_data.data.url);
+                // Thực hiện gọi API
+                var settings = {
+                    url: localStorage.getItem("http_endpoint") + "ccos/gia_han_ckd",
+                    method: "POST",
+                    timeout: 0,
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    data: JSON.stringify({
+                        "user_ccos": user_ccos,
+                        "url": response_data.data.url
+                    }),
+                };
+            
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                    if(response.GiaHanThanhCong){
+                        alert("Thành công: " + response.Messenger);
+                    }
+                    else {
+                        alert("Thất bại: " + response.Messenger);
+                    }
+                    document.getElementById('btnXacNhanGHCKD').disabled = false;
+                    document.getElementById('loading-screen').style.display = "none";
+                }).fail(function (error) {
+                    document.getElementById('btnXacNhanGHCKD').disabled = false;
+                    document.getElementById('loading-screen').style.display = "none";
+                    console.error("Lỗi khi gọi API GH:", error);
+                });
+            })
+            .catch(() => {
+                document.getElementById('loading-screen').style.display = "none";
+                document.getElementById('btnXacNhanGHCKD').disabled = false;
+            });
+    }
+}
+
 function closePopup() {
     document.getElementById("popup").style.display = "none";
+}
+
+function closePopupGH() {
+    document.getElementById("popupGH").style.display = "none";
 }
 
 fetchDataOBTrong24h();

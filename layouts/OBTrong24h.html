@@ -111,6 +111,34 @@
       </div>
     </div>
 
+    <div id="popupGH" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closePopupGH()">&times;</span>
+        <!-- <p id="popup-data">Dữ liệu sẽ hiển thị ở đây!</p> -->
+        <h2 style="text-align: center">Gia hạn</h2>
+        <select name="dropdownList" id="dropdownListGH" class="styled-select">
+          <option value="volvo"></option>
+        </select>
+        <form id="popup-form" method="post">
+          <input type="hidden" id="hidden-mappingid" name="mappingid" />
+          <input type="hidden" id="hidden-loai-tb" name="loai-tb" />
+          <input type="hidden" id="hidden-ten-tb" name="ten-tb" />
+          <input type="hidden" id="hidden-tkc" name="tkc" />
+          <input type="hidden" id="hidden-msin" name="msin" />
+          <input type="hidden" id="hidden-ngay-kh" name="ngay-kh" />
+          <input type="hidden" id="hidden-hsd" name="hsd" />
+          <input type="hidden" id="hidden-dia-chi-tb" name="dia-chi-tb" />
+
+        </form>
+        <div class="button-group">
+          <button class="custom-button" id="btnXacNhanGHCKD" onclick="submitFormGH(this)">Xác nhận</button>
+          <button class="custom-button-red" onclick="closePopupGH()">
+            Hủy
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- DataTables JS -->
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
