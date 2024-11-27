@@ -1,5 +1,5 @@
-localStorage.setItem("http_endpoint", "https://0f5f-113-161-213-64.ngrok-free.app/");
-localStorage.setItem("http_local_endpoint", "http://192.168.103.48:9000/");
+localStorage.setItem("http_endpoint", "https://5f26-113-161-213-64.ngrok-free.app/");
+localStorage.setItem("http_local_endpoint", "http://10.94.35.204:9000/");
 
 function convertDateTime(dateTimeString) {
     // Chuyển đổi chuỗi thành đối tượng Date
