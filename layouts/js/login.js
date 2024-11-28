@@ -26,6 +26,7 @@ function loginUser(userName, password) {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "1"
         },
         body: JSON.stringify(loginData),
     })
@@ -55,7 +56,7 @@ function fetchUnreadMessages() {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("access_token")}`,
             "Content-Type": "application/json",
-            "ngrok-skip-browser-warning": "1",
+            "ngrok-skip-browser-warning": "1"
         },
     })
         .then((response) => response.json())
@@ -80,6 +81,7 @@ function searchUserById(receiveUserId) {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("access_token")}`,
                 "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "1"
             },
         }
     )

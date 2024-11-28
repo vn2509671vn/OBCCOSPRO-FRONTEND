@@ -8,6 +8,7 @@ function fetchDataTaiKhoanCCOS() {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("access_token")}`,
             "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "1"
         },
     })
         .then(response => response.json())
@@ -97,7 +98,8 @@ function submitFormXoa() {
             method: "POST",
             timeout: 0,
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "1"
             },
             data: JSON.stringify({
                 "obccos_user_code": localStorage.getItem("user_code"),
@@ -138,7 +140,8 @@ function submitFormThem() {
             method: "POST",
             timeout: 0,
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "1"
             },
             data: JSON.stringify({
                 "obccos_user_code": localStorage.getItem("user_code"),
@@ -179,7 +182,8 @@ function submitFormOTP() {
             timeout: 0,
             headers: {
                 Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "1"
             },
             data: JSON.stringify({
                 "otp": otp
@@ -234,7 +238,8 @@ function loginCCOS(button) {
             method: "POST",
             timeout: 0,
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "1"
             },
             data: JSON.stringify({
                 "username": tk_ccos,

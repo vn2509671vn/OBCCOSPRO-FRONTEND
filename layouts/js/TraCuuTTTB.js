@@ -23,6 +23,7 @@ function searchSubscriber() {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("access_token")}`,
                 "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "1"
             },
         }
     )
@@ -38,6 +39,7 @@ function searchSubscriber() {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
                         "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "1"
                     },
                 }
             )
@@ -52,6 +54,7 @@ function searchSubscriber() {
                             headers: {
                                 Authorization: `Bearer ${localStorage.getItem("access_token")}`,
                                 "Content-Type": "application/json",
+                                "ngrok-skip-browser-warning": "1"
                             },
                         }
                     )
@@ -89,7 +92,8 @@ function fetchAutoCallData(sdt) {
         method: "POST",
         timeout: 0,
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "1"
         },
         data: JSON.stringify({ "sdt": sdt }),
     };
@@ -124,6 +128,7 @@ function fetchChuyenOBData(sdt) {
         headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+            "ngrok-skip-browser-warning": "1"
         }
     };
 

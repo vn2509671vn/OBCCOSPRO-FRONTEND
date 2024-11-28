@@ -25,6 +25,7 @@ function fetchDataHenGoiLaiCKD() {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("access_token")}`,
                 "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "1"
             },
         })
             .then(response => response.json())

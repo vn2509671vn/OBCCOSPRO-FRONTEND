@@ -8,6 +8,7 @@ function fetchDataHenGoiLaiCKD() {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("access_token")}`,
             "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "1"
         },
     })
         .then(response => response.json())
@@ -120,6 +121,7 @@ function submitForm() {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("access_token")}`,
                 "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "1"
             },
         })
             .then(response => {
@@ -170,6 +172,7 @@ function submitFormGH(button) {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("access_token")}`,
                 "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "1"
             },
         })
             .then((response) => response.json()).then((response_data) => {
@@ -180,7 +183,8 @@ function submitFormGH(button) {
                     method: "POST",
                     timeout: 0,
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "1"
                     },
                     data: JSON.stringify({
                         "user_ccos": user_ccos,
@@ -222,6 +226,7 @@ function showPopup2(button, sdt) {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("access_token")}`,
                 "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "1"
             },
         }
     )
@@ -235,6 +240,7 @@ function showPopup2(button, sdt) {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
                         "Content-Type": "application/json",
+                        "ngrok-skip-browser-warning": "1"
                     },
                 }
             )
@@ -247,6 +253,7 @@ function showPopup2(button, sdt) {
                             headers: {
                                 Authorization: `Bearer ${localStorage.getItem("access_token")}`,
                                 "Content-Type": "application/json",
+                                "ngrok-skip-browser-warning": "1"
                             },
                         }
                     )
@@ -269,6 +276,7 @@ function showPopup2(button, sdt) {
                                 headers: {
                                     Authorization: `Bearer ${localStorage.getItem("access_token")}`,
                                     "Content-Type": "application/json",
+                                    "ngrok-skip-browser-warning": "1"
                                 },
                             })
                                 .then(response => response.json())
@@ -325,6 +333,7 @@ function showPopup(button, url) {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("access_token")}`,
                 "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "1"
             },
         }
     )
