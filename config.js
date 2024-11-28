@@ -1,4 +1,4 @@
-localStorage.setItem("http_endpoint", "https://kitten-warm-wrongly.ngrok-free.app/");
+localStorage.setItem("http_endpoint", "https://true-mentally-wahoo.ngrok-free.app/");
 localStorage.setItem("http_local_endpoint", "http://10.94.35.204:9000/");
 
 function convertDateTime(dateTimeString) {
