@@ -195,10 +195,10 @@ function submitFormGH(button) {
                 $.ajax(settings).done(function (response) {
                     console.log(response);
                     if(response.GiaHanThanhCong){
-                        alert("Thành công: " + response.Messenger);
+                        alert("Thành công: " + response.Message);
                     }
                     else {
-                        alert("Thất bại: " + response.Messenger);
+                        alert("Thất bại: " + response.Message);
                     }
                     document.getElementById('btnXacNhanGHCKD').disabled = false;
                     document.getElementById('loading-screen').style.display = "none";
