@@ -1,8 +1,8 @@
 // Hàm lấy dữ liệu từ API
-function fetchDataHenGoiLaiCKD() {
-
+function fetchDataHenGoiLaiBG() {
     var button = document.getElementById('search-btn');
     var loadingScreen = document.getElementById('loading-screen');
+
     if (!button) {
         console.error('Nút search-btn không tồn tại');
         return;
@@ -10,17 +10,16 @@ function fetchDataHenGoiLaiCKD() {
 
     button.disabled = true; // Disable nút ngay lập tức
     loadingScreen.style.display = 'block';
-
     var startDate = document.getElementById('start-date').value;
     var endDate = document.getElementById('end-date').value;
 
-
     if (!startDate || !endDate) {
         alert("Vui lòng chọn ngày bắt đầu và ngày kết thúc");
-        button.disabled = false; // Enable lại nút sau khi hoàn tất
         loadingScreen.style.display = 'none';
+
+        button.disabled = false; // Enable lại nút khi thiếu thông tin
     } else {
-        fetch(localStorage.getItem("http_endpoint") + 'obccos/BaoCaoCKD?fromN=' + formatDate(startDate) + '&toN=' + formatDate(endDate) + '&employeename=' + localStorage.getItem("user_name"), {
+        fetch(localStorage.getItem("http_endpoint") + 'obccos/BaoCaoBG?fromN=' + formatDate(startDate) + '&toN=' + formatDate(endDate) + '&employeename=' + localStorage.getItem("user_name"), {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("access_token")}`,
@@ -34,36 +33,27 @@ function fetchDataHenGoiLaiCKD() {
                 if (data.errorCode === "1") {
                     var filteredData = data.data.map(item => ([
                         "", // Chỗ để số thứ tự sẽ được thêm ở đây
-                        item.SOTHUEBAO,
-                        item.NGAYMODICHVU,
-                        item.TENCHUONGTRINH,
-                        item.HRM,
-                        item.MAGOI_TRUOCOB,
-                        item.CHUKYGOI_TRUOCOB,
-                        item.DOANHTHU_TRUOCOB,
-                        item.TRANGTHAIOB,
-                        item.CDATE,
+                        item.SMIS,
+                        item.EMPLOYEENAME,
+                        item.EMPLOYEEHRMCODE,
+                        item.TENTAP,
+                        item.OBDATE,
                         item.MAGOI,
                         item.CHUKY,
                         item.DOANHTHU,
-                        item.CHUKYGIAHAN,
-                        item.NGAYMODICHVU,
-                        item.GIAHAN_CCOS,
-                        item.GIAHAN_AUTO
+                        item.NGAYMODICHVU
                     ]));
-
-                    handleApiData(data);
                     reloadTable(filteredData);
+                    handleApiData(data);
 
                 } else {
                     console.error('Error:');
                 }
-
                 button.disabled = false; // Enable lại nút sau khi hoàn tất
                 loadingScreen.style.display = 'none';
             })
             .catch(error => {
-                console.error('Lỗi:', error)
+                console.error('Lỗi:', error);
                 loadingScreen.style.display = 'none';
                 button.disabled = false; // Enable lại nút khi có lỗi
                 if ($.fn.DataTable.isDataTable('#scroll-horizontal-datatable')) {
@@ -72,8 +62,8 @@ function fetchDataHenGoiLaiCKD() {
             });
 
     }
-
 }
+
 
 // Hàm tải lại bảng với dữ liệu mới
 function reloadTable(data) {
@@ -88,21 +78,14 @@ function reloadTable(data) {
         columns: [
             { title: "STT" }, // Cột cho số thứ tự
             { title: "Số TB" },
-            { title: "Ngày kích hoạt" },
-            { title: "Tên chương trình" },
+            { title: "ĐTV" },
             { title: "HRM" },
-            { title: "Mã gói trước OB" },
-            { title: "Chu kỳ gói trước OB" },
-            { title: "Doanh thu trước OB" },
-            { title: "Trạng thái OB" },
-            { title: "Ngày OB" },
-            { title: "Mã gói dịch vụ mới" },
-            { title: "Chu kỳ gói" },
-            { title: "Doanh thu ĐK/GH" },
-            { title: "Chu kỳ gia hạn" },
-            { title: "Ngày mở dịch vụ" },
-            { title: "GH/ĐK bởi ĐTV" },
-            { title: "GH tự động" }
+            { title: "Tên tập" },
+            { title: "Thời gian thực hiện OB" },
+            { title: "Gói cước ĐK" },
+            { title: "Chu kỳ" },
+            { title: "Doanh thu" },
+            { title: "Ngày mở dịch vụ" }
         ],
         paging: true,
         searching: true,
@@ -123,7 +106,7 @@ function reloadTable(data) {
                 },
                 className: 'excel-button'
             }
-        ],
+        ], 
         createdRow: function (row, data, dataIndex) {
             // Thêm số thứ tự vào cột đầu tiên
             var table = this.api();
@@ -136,25 +119,14 @@ function reloadTable(data) {
 function handleApiData(responseData) {
     var dataArray = responseData.data || [];
 
-    var countGiaHanAuto = dataArray.filter(item => item.GIAHAN_AUTO === "x").length;
+    var countGiaHanDTV = dataArray.length;
 
-    var totalDoanhThuAuto = dataArray
-        .filter(item => item.GIAHAN_AUTO === "x")
+    var totalDoanhThuDTV = dataArray
         .reduce((sum, item) => sum + parseInt(item.DOANHTHU || 0, 10), 0);
 
+    document.getElementById('result-sl-gh-boi-dtv').textContent = countGiaHanDTV;
+    document.getElementById('result-doanh-thu-gh-boi-dtv').textContent = totalDoanhThuDTV.toLocaleString() + ' VNĐ';
 
-
-    var countGiaHanCCOS = dataArray.filter(item => item.GIAHAN_CCOS === "x").length;
-
-    var totalDoanhThuCCOS = dataArray
-        .filter(item => item.GIAHAN_CCOS === "x")
-        .reduce((sum, item) => sum + parseInt(item.DOANHTHU || 0, 10), 0);
-
-    document.getElementById('result-sl-gh-boi-dtv').textContent = countGiaHanCCOS;
-    document.getElementById('result-doanh-thu-gh-boi-dtv').textContent = totalDoanhThuCCOS.toLocaleString() + ' VNĐ';
-
-    document.getElementById('result-sl-gh-tu-dong').textContent = countGiaHanAuto;
-    document.getElementById('result-doanh-thu-gh-tu-dong').textContent = totalDoanhThuAuto.toLocaleString() + ' VNĐ';
 }
 
 document.getElementById('start-date').valueAsDate = firstDayOfMonth;

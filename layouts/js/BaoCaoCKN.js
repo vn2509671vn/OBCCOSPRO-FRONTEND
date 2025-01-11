@@ -1,7 +1,7 @@
 // Hàm lấy dữ liệu từ API
 function fetchDataHenGoiLaiCKN() {
-    const button = document.getElementById('search-btn');
-    const loadingScreen = document.getElementById('loading-screen');
+    var button = document.getElementById('search-btn');
+    var loadingScreen = document.getElementById('loading-screen');
 
     if (!button) {
         console.error('Nút search-btn không tồn tại');
@@ -10,8 +10,8 @@ function fetchDataHenGoiLaiCKN() {
 
     button.disabled = true; // Disable nút ngay lập tức
     loadingScreen.style.display = 'block';
-    const startDate = document.getElementById('start-date').value;
-    const endDate = document.getElementById('end-date').value;
+    var startDate = document.getElementById('start-date').value;
+    var endDate = document.getElementById('end-date').value;
 
     if (!startDate || !endDate) {
         alert("Vui lòng chọn ngày bắt đầu và ngày kết thúc");
@@ -31,7 +31,7 @@ function fetchDataHenGoiLaiCKN() {
             .then(data => {
                 console.log('API data:', data);
                 if (data.errorCode === "1") {
-                    const filteredData = data.data.map(item => ([
+                    var filteredData = data.data.map(item => ([
                         "", // Chỗ để số thứ tự sẽ được thêm ở đây
                         item.SOTHUEBAO,
                         item.NGAYMODICHVU,
@@ -120,29 +120,30 @@ function reloadTable(data) {
                 },
                 className: 'excel-button'
             }
-        ], ion(row, data, dataIndex) {
+        ], 
+        createdRow: function (row, data, dataIndex) {
             // Thêm số thứ tự vào cột đầu tiên
-            const table = this.api();
-            const rowIndex = dataIndex + 1; // Thêm 1 để bắt đầu từ 1 thay vì 0
+            var table = this.api();
+            var rowIndex = dataIndex + 1; // Thêm 1 để bắt đầu từ 1 thay vì 0
             $('td:eq(0)', row).html(rowIndex);
         }
     });
 }
 
 function handleApiData(responseData) {
-    const dataArray = responseData.data || [];
+    var dataArray = responseData.data || [];
 
-    const countGiaHanAuto = dataArray.filter(item => item.GIAHAN_AUTO === "x").length;
+    var countGiaHanAuto = dataArray.filter(item => item.GIAHAN_AUTO === "x").length;
 
-    const totalDoanhThuAuto = dataArray
+    var totalDoanhThuAuto = dataArray
         .filter(item => item.GIAHAN_AUTO === "x")
         .reduce((sum, item) => sum + parseInt(item.DOANHTHU || 0, 10), 0);
 
 
 
-    const countGiaHanCCOS = dataArray.filter(item => item.GIAHAN_CCOS === "x").length;
+    var countGiaHanCCOS = dataArray.filter(item => item.GIAHAN_CCOS === "x").length;
 
-    const totalDoanhThuCCOS = dataArray
+    var totalDoanhThuCCOS = dataArray
         .filter(item => item.GIAHAN_CCOS === "x")
         .reduce((sum, item) => sum + parseInt(item.DOANHTHU || 0, 10), 0);
 
@@ -152,5 +153,6 @@ function handleApiData(responseData) {
     document.getElementById('result-sl-gh-tu-dong').textContent = countGiaHanAuto;
     document.getElementById('result-doanh-thu-gh-tu-dong').textContent = totalDoanhThuAuto.toLocaleString() + ' VNĐ';
 }
-document.getElementById('start-date').valueAsDate = new Date();
-document.getElementById('end-date').valueAsDate = new Date();
+
+document.getElementById('start-date').valueAsDate = firstDayOfMonth;
+document.getElementById('end-date').valueAsDate = yesterday;

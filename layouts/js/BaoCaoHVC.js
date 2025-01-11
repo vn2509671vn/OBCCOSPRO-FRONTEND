@@ -1,8 +1,8 @@
 // Hàm lấy dữ liệu từ API
-function fetchDataHenGoiLaiCKD() {
-
+function fetchDataHenGoiLaiHVC() {
     var button = document.getElementById('search-btn');
     var loadingScreen = document.getElementById('loading-screen');
+
     if (!button) {
         console.error('Nút search-btn không tồn tại');
         return;
@@ -10,17 +10,16 @@ function fetchDataHenGoiLaiCKD() {
 
     button.disabled = true; // Disable nút ngay lập tức
     loadingScreen.style.display = 'block';
-
     var startDate = document.getElementById('start-date').value;
     var endDate = document.getElementById('end-date').value;
 
-
     if (!startDate || !endDate) {
         alert("Vui lòng chọn ngày bắt đầu và ngày kết thúc");
-        button.disabled = false; // Enable lại nút sau khi hoàn tất
         loadingScreen.style.display = 'none';
+
+        button.disabled = false; // Enable lại nút khi thiếu thông tin
     } else {
-        fetch(localStorage.getItem("http_endpoint") + 'obccos/BaoCaoCKD?fromN=' + formatDate(startDate) + '&toN=' + formatDate(endDate) + '&employeename=' + localStorage.getItem("user_name"), {
+        fetch(localStorage.getItem("http_endpoint") + 'obccos/BaoCaoHVC?fromN=' + formatDate(startDate) + '&toN=' + formatDate(endDate) + '&employeename=' + localStorage.getItem("user_name"), {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("access_token")}`,
@@ -35,14 +34,10 @@ function fetchDataHenGoiLaiCKD() {
                     var filteredData = data.data.map(item => ([
                         "", // Chỗ để số thứ tự sẽ được thêm ở đây
                         item.SOTHUEBAO,
-                        item.NGAYMODICHVU,
                         item.TENCHUONGTRINH,
+                        item.EMPLOYEENAME,
                         item.HRM,
-                        item.MAGOI_TRUOCOB,
-                        item.CHUKYGOI_TRUOCOB,
-                        item.DOANHTHU_TRUOCOB,
-                        item.TRANGTHAIOB,
-                        item.CDATE,
+                        item.THOIGIANTHUCHIEN,
                         item.MAGOI,
                         item.CHUKY,
                         item.DOANHTHU,
@@ -51,19 +46,17 @@ function fetchDataHenGoiLaiCKD() {
                         item.GIAHAN_CCOS,
                         item.GIAHAN_AUTO
                     ]));
-
-                    handleApiData(data);
                     reloadTable(filteredData);
+                    handleApiData(data);
 
                 } else {
                     console.error('Error:');
                 }
-
                 button.disabled = false; // Enable lại nút sau khi hoàn tất
                 loadingScreen.style.display = 'none';
             })
             .catch(error => {
-                console.error('Lỗi:', error)
+                console.error('Lỗi:', error);
                 loadingScreen.style.display = 'none';
                 button.disabled = false; // Enable lại nút khi có lỗi
                 if ($.fn.DataTable.isDataTable('#scroll-horizontal-datatable')) {
@@ -72,8 +65,8 @@ function fetchDataHenGoiLaiCKD() {
             });
 
     }
-
 }
+
 
 // Hàm tải lại bảng với dữ liệu mới
 function reloadTable(data) {
@@ -88,21 +81,17 @@ function reloadTable(data) {
         columns: [
             { title: "STT" }, // Cột cho số thứ tự
             { title: "Số TB" },
-            { title: "Ngày kích hoạt" },
-            { title: "Tên chương trình" },
+            { title: "Nghiệp vụ bán hàng" },
+            { title: "ĐTV" },
             { title: "HRM" },
-            { title: "Mã gói trước OB" },
-            { title: "Chu kỳ gói trước OB" },
-            { title: "Doanh thu trước OB" },
-            { title: "Trạng thái OB" },
-            { title: "Ngày OB" },
-            { title: "Mã gói dịch vụ mới" },
-            { title: "Chu kỳ gói" },
+            { title: "Thời gian thực hiện OB" },
+            { title: "Mã gói gia hạn/đăng ký mới" },
+            { title: "Chu kỳ gói mới" },
             { title: "Doanh thu ĐK/GH" },
             { title: "Chu kỳ gia hạn" },
             { title: "Ngày mở dịch vụ" },
-            { title: "GH/ĐK bởi ĐTV" },
-            { title: "GH tự động" }
+            { title: "Gia hạn/ĐK thành công qua CCOS - OB" },
+            { title: "Gia hạn tự động" }
         ],
         paging: true,
         searching: true,
@@ -123,7 +112,7 @@ function reloadTable(data) {
                 },
                 className: 'excel-button'
             }
-        ],
+        ], 
         createdRow: function (row, data, dataIndex) {
             // Thêm số thứ tự vào cột đầu tiên
             var table = this.api();

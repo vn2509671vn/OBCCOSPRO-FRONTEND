@@ -1,6 +1,13 @@
 localStorage.setItem("http_endpoint", "https://f18f-113-161-213-64.ngrok-free.app/");
 localStorage.setItem("http_local_endpoint", "http://10.94.35.204:9000/");
 
+const today = new Date();
+const yesterday = new Date();
+yesterday.setDate(today.getDate() - 1);
+
+const firstDayOfMonth = new Date(yesterday);
+firstDayOfMonth.setDate(1); // Đặt ngày là ngày 1 của tháng
+
 function convertDateTime(dateTimeString) {
     // Chuyển đổi chuỗi thành đối tượng Date
     const date = new Date(dateTimeString);
