@@ -107,12 +107,25 @@ function fetchAutoCallData(sdt) {
 
         // Thêm dữ liệu mới từ response vào DataTable
         response.data.forEach(function (item) {
+
+            let popUrl = item.PopUrl ? item.PopUrl.trim() : ""; // Loại bỏ khoảng trắng thừa
+
+            // Loại bỏ dấu " dư thừa nếu có
+            if (popUrl.startsWith('"') && popUrl.endsWith('"')) {
+                popUrl = popUrl.slice(1, -1);
+            }
+
+            let popUrlHtml = popUrl
+                ? `<a href="${popUrl}" target="_blank">Mở Popup</a>`
+                : "";
+
             table.row.add([
                 item.SoDienThoai,
                 item.LoaiChuongTrinh,
                 item.NguoiThucHien,
                 item.NgayThucHien,
-                item.TrangThaiOB
+                item.TrangThaiOB,
+                popUrlHtml
             ]).draw();
         });
     }).fail(function (error) {
