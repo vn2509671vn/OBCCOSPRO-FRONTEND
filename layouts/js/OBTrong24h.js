@@ -203,7 +203,9 @@ function showPopup(button, url) {
 
     var row = button.closest('tr');
     var id = row.cells[1].innerText;
+    var progid = row.cells[8].innerText;
     document.getElementById("hidden-id").value = id;
+    document.getElementById("hidden-progID").value = progid;
 
     document.getElementById("popup").style.display = "block";
 }
