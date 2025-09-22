@@ -1,6 +1,6 @@
 //localStorage.setItem("http_endpoint", "https://31358c1ca231.ngrok-free.app/"); // thangtgm93@gmail.com
-localStorage.setItem("http_endpoint", "https://b4ee437b50df.ngrok-free.app/"); // vn2509671vn@gmail.com
-//localStorage.setItem("http_endpoint", "https://92f5-113-161-213-71.ngrok-free.app/"); // vn2509671vn2@gmail.com
+//localStorage.setItem("http_endpoint", "https://b4ee437b50df.ngrok-free.app/"); // vn2509671vn@gmail.com
+localStorage.setItem("http_endpoint", "https://44ff51549f6a.ngrok-free.app/"); // vn2509671vn2@gmail.com
 //localStorage.setItem("http_endpoint", "https://3f3de2bef1af.ngrok-free.app/"); // vn25096711@gmail.com
 localStorage.setItem("http_local_endpoint", "http://10.94.35.204:9000/");
 
